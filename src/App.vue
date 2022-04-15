@@ -1,25 +1,10 @@
 <script setup>
 import UserData from "./components/UserData.vue";
-import { useFetch } from "./js/fetch.js";
 </script>
 
 <template>
-  <div v-if="error">Error encountered: {{ error.message }}</div>
-  <div v-else-if="user">
-    <UserData :user="user"></UserData>
-  </div>
-  <div v-else>Loading...</div>
+  <UserData></UserData>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      user: useFetch("https://randomuser.me/api/"),
-    };
-  },
-};
-</script>
 
 <style>
 @import "./assets/base.css";
