@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+import UserData from "./components/UserData.vue";
 </script>
 
 <template>
@@ -21,7 +22,19 @@ import TheWelcome from "./components/TheWelcome.vue";
   <main>
     <TheWelcome />
   </main>
+
+  <UserData :user="user"></UserData>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: [{ name: "Harald Töpfer", age: 22 }],
+    };
+  },
+};
+</script>
 
 <style>
 @import "./assets/base.css";

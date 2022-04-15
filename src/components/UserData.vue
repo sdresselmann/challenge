@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  user: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
 <template>
-  <p></p>
+  <p>{{ user }}</p>
 </template>
