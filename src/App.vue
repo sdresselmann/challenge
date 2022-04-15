@@ -1,21 +1,12 @@
 <script setup>
 import UserData from "./components/UserData.vue";
-import { ref } from "vue";
-
-const data = ref(null);
-const error = ref(null);
-
-fetch("https://randomuser.me/api/")
-  .then((res) => res.json())
-  .then((json) => (data.value = json))
-  .catch((err) => (error.value = err));
+import { useFetch } from "./js/fetch.js";
 </script>
 
 <template>
-  <div v-if="error">Oops! Error encountered: {{ error.message }}</div>
-  <div v-else-if="data">
-    Data loaded:
-    <pre>{{ data }}</pre>
+  <div v-if="error">Error encountered: {{ error.message }}</div>
+  <div v-else-if="user">
+    <UserData :user="user"></UserData>
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -24,8 +15,7 @@ fetch("https://randomuser.me/api/")
 export default {
   data() {
     return {
-      user: [{ name: "Harald Töpfer", age: 22 }],
-      info: null,
+      user: useFetch("https://randomuser.me/api/"),
     };
   },
 };
