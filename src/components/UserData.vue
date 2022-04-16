@@ -6,7 +6,26 @@ import { useFetch } from "../js/fetch.js";
   <div v-if="userData.error">
     Oops! Error encountered: {{ userData.error.message }}
   </div>
-  <div v-else-if="userData.data">{{ userData.data.results }}</div>
+  <div v-else-if="userData.data">
+    <el-avatar
+      shape="circle"
+      :size="100"
+      :fit="fit"
+      :src="userData.data.results[0].picture.large"
+    />
+    <h1>
+      {{
+        userData.data.results[0].name.title +
+        " " +
+        userData.data.results[0].name.first +
+        " " +
+        userData.data.results[0].name.last
+      }}
+    </h1>
+    <h2>Age: {{ userData.data.results[0].dob.age }}</h2>
+    <h2>Nationality: {{ userData.data.results[0].nat }}</h2>
+    <h2>Gender: {{ userData.data.results[0].gender }}</h2>
+  </div>
 </template>
 
 <script>
