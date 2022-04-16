@@ -6,7 +6,7 @@ import { useFetch } from "../js/fetch.js";
   <div v-if="userData.error">
     Oops! Error encountered: {{ userData.error.message }}
   </div>
-  <div v-else-if="userData.data" class="userCard">
+  <div v-else-if="userData.data">
     <el-card>
       <el-avatar
         shape="circle"
@@ -14,7 +14,7 @@ import { useFetch } from "../js/fetch.js";
         :fit="fit"
         :src="userData.data.results[0].picture.large"
       />
-      <h1>
+      <h1 id="fullName">
         <!-- Using string concatenation instead of string literals because vue makes it way to complicated for this example -->
         {{
           userData.data.results[0].name.title +
@@ -24,14 +24,15 @@ import { useFetch } from "../js/fetch.js";
           userData.data.results[0].name.last
         }}
       </h1>
-
-      <p>email:{{ userData.data.results[0].email }}</p>
-      <p>cell: {{ userData.data.results[0].cell }}</p>
-      <p>phone: {{ userData.data.results[0].phone }}</p>
-
-      <p>age: {{ userData.data.results[0].dob.age }}</p>
-      <p>nationality: {{ userData.data.results[0].nat }}</p>
-      <p>gender: {{ userData.data.results[0].gender }}</p>
+      <div id="contact">
+        <p>email:{{ userData.data.results[0].email }}</p>
+        <p>phone: {{ userData.data.results[0].phone }}</p>
+      </div>
+      <div id="info">
+        <p>age: {{ userData.data.results[0].dob.age }}</p>
+        <p>nationality: {{ userData.data.results[0].nat }}</p>
+        <p>gender: {{ userData.data.results[0].gender }}</p>
+      </div>
     </el-card>
   </div>
 </template>
@@ -50,4 +51,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#fullName {
+  border-bottom: 1px solid black;
+}
+</style>
