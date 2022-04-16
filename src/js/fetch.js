@@ -1,5 +1,9 @@
 import { ref } from "vue";
-
+/**
+ * singleton fetch method
+ * @param {*} url for the target API
+ * @returns {data, error} of the request method
+ */
 export function useFetch(url) {
   const data = ref(null);
   const error = ref(null);

@@ -14,6 +14,7 @@ import { useFetch } from "../js/fetch.js";
       :src="userData.data.results[0].picture.large"
     />
     <h1>
+      <!-- Using string concatenation instead of string literals because vue makes it way to complicated for this example -->
       {{
         userData.data.results[0].name.title +
         " " +
