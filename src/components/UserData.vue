@@ -7,28 +7,32 @@ import { useFetch } from "../js/fetch.js";
     Oops! Error encountered: {{ userData.error.message }}
   </div>
   <div v-else-if="userData.data" class="userCard">
-    <div class="userPicture">
+    <el-card>
       <el-avatar
         shape="circle"
         :size="100"
         :fit="fit"
         :src="userData.data.results[0].picture.large"
       />
-      <div class="contactInfo"></div>
-    </div>
-    <h1>
-      <!-- Using string concatenation instead of string literals because vue makes it way to complicated for this example -->
-      {{
-        userData.data.results[0].name.title +
-        " " +
-        userData.data.results[0].name.first +
-        " " +
-        userData.data.results[0].name.last
-      }}
-    </h1>
-    <h2>Age: {{ userData.data.results[0].dob.age }}</h2>
-    <h2>Nationality: {{ userData.data.results[0].nat }}</h2>
-    <h2>Gender: {{ userData.data.results[0].gender }}</h2>
+      <h1>
+        <!-- Using string concatenation instead of string literals because vue makes it way to complicated for this example -->
+        {{
+          userData.data.results[0].name.title +
+          " " +
+          userData.data.results[0].name.first +
+          " " +
+          userData.data.results[0].name.last
+        }}
+      </h1>
+
+      <p>email:{{ userData.data.results[0].email }}</p>
+      <p>cell: {{ userData.data.results[0].cell }}</p>
+      <p>phone: {{ userData.data.results[0].phone }}</p>
+
+      <p>age: {{ userData.data.results[0].dob.age }}</p>
+      <p>nationality: {{ userData.data.results[0].nat }}</p>
+      <p>gender: {{ userData.data.results[0].gender }}</p>
+    </el-card>
   </div>
 </template>
 
@@ -46,15 +50,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.userCard {
-  border: 1px solid var(--color-border);
-  border-radius: 0%;
-  padding: 10px;
-}
-
-.userPicture {
-  border-bottom: 1px solid var(--color-border);
-  padding: 0px;
-}
-</style>
+<style scoped></style>
