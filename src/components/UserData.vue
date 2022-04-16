@@ -14,10 +14,11 @@ export default {
   data() {
     return {
       userData: [],
+      url: "https://randomuser.me/api/",
     };
   },
   mounted() {
-    this.userData = useFetch("https://randomuser.me/api/");
+    this.userData = useFetch(this.url);
   },
 };
 </script>
