@@ -3,19 +3,21 @@ import { useFetch } from "../js/fetch.js";
 </script>
 
 <template>
-  <div v-if="result.error">
-    Oops! Error encountered: {{ result.error.message }}
+  <div v-if="userData.error">
+    Oops! Error encountered: {{ userData.error.message }}
   </div>
-  <div v-else-if="result.data">{{ result }}</div>
-  <div v-else>Loading...</div>
+  <div v-else-if="userData.data">{{ userData.data.results }}</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      result: useFetch("https://randomuser.me/api/"),
+      userData: [],
     };
+  },
+  mounted() {
+    this.userData = useFetch("https://randomuser.me/api/");
   },
 };
 </script>
