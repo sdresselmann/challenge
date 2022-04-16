@@ -6,13 +6,16 @@ import { useFetch } from "../js/fetch.js";
   <div v-if="userData.error">
     Oops! Error encountered: {{ userData.error.message }}
   </div>
-  <div v-else-if="userData.data">
-    <el-avatar
-      shape="circle"
-      :size="100"
-      :fit="fit"
-      :src="userData.data.results[0].picture.large"
-    />
+  <div v-else-if="userData.data" class="userCard">
+    <div class="userPicture">
+      <el-avatar
+        shape="circle"
+        :size="100"
+        :fit="fit"
+        :src="userData.data.results[0].picture.large"
+      />
+      <div class="contactInfo"></div>
+    </div>
     <h1>
       <!-- Using string concatenation instead of string literals because vue makes it way to complicated for this example -->
       {{
@@ -42,3 +45,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.userCard {
+  border: 1px solid var(--color-border);
+  border-radius: 0%;
+  padding: 10px;
+}
+
+.userPicture {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0px;
+}
+</style>
